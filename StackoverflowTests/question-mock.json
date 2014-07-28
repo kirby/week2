@@ -1,0 +1,30 @@
+{
+    "items": [
+              {
+              "tags": [
+                       "swift"
+                       ],
+              "owner": {
+              "reputation": 42,
+              "user_id": 3722268,
+              "user_type": "registered",
+              "profile_image": "https://www.gravatar.com/avatar/ec037659ff5ecdaddf45555de56cb1ce?s=128&d=identicon&r=PG&f=1",
+              "display_name": "ios.apple",
+              "link": "http://stackoverflow.com/users/3722268/ios-apple"
+              },
+              "is_answered": true,
+              "view_count": 236,
+              "answer_count": 4,
+              "score": 0,
+              "last_activity_date": 1406579041,
+              "creation_date": 1402326942,
+              "last_edit_date": 1402327956,
+              "question_id": 24123312,
+              "link": "http://stackoverflow.com/questions/24123312/convert-float-value-to-string-in-swift",
+              "title": "Convert float value to String in Swift"
+              }
+              ],
+    "has_more": true,
+    "quota_max": 10000,
+    "quota_remaining": 9907
+}

@@ -1,6 +1,6 @@
 //
-//  StackoverflowTests.swift
-//  StackoverflowTests
+//  QuestionTests.swift
+//  Stackoverflow
 //
 //  Created by Kirby Shabaga on 7/28/14.
 //  Copyright (c) 2014 Worxly. All rights reserved.
@@ -11,9 +11,10 @@ import XCTest
 
 class StackoverflowTests: XCTestCase {
     
+    var mockData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("question-mock", ofType: "json"))
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -21,16 +22,10 @@ class StackoverflowTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testQuestion_mock_json_isValid() {
+        var stackoverflow = Stackoverflow(data: mockData)
+        XCTAssertEqual(stackoverflow.questions.count, 1, "There should be one question from mock data")
+        
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+
 }

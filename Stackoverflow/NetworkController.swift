@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class NetworkController : NSObject, NSURLSessionDataDelegate {
+class NetworkController {
     
     var prefix = "https://api.stackexchange.com"
-    // restrict page size to 1 for now
+    // restrict page size to 5 for now
     var pagesieze = 5
     var suffix = "/2.2/search?order=desc&sort=activity&site=stackoverflow&pagesize="  // 1&intitle="
     
@@ -42,6 +42,9 @@ class NetworkController : NSObject, NSURLSessionDataDelegate {
                 }
                 
                 var searches = Search.parseFromNSData(data)
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    view.text = "Your results...\n\n"
+                })
                 
                 for search in searches {
                     println("search = \(search.title)")

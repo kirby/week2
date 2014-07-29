@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     @IBAction func searchButton(sender: AnyObject) {
         println("searching for \(textField.text)")
         resultsView.text = "Searching..."
-        var data: () = networkController.searchInTitle("\(textField.text)", view: resultsView)
+        networkController.searchInTitle("\(textField.text)", view: resultsView)
     }
 
 }

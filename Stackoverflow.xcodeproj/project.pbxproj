@@ -97,6 +97,14 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		4E0AEDC3198848AC001CB2C3 /* deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */,
+			);
+			name = deprecated;
+			sourceTree = "<group>";
+		};
 		4E378DC01986DC3A000B71A2 = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +175,7 @@
 				4E378DEC1986DDE3000B71A2 /* Question.swift */,
 				4E0AEDBE19883C92001CB2C3 /* Search.swift */,
 				4E378DF11986E0E5000B71A2 /* User.swift */,
-				4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */,
+				4E0AEDC3198848AC001CB2C3 /* deprecated */,
 			);
 			name = Model;
 			sourceTree = "<group>";

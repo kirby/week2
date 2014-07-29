@@ -23,4 +23,33 @@ class User {
         self.profile_image = profileImage
     }
     
+    class func parseUsers(data : NSData) -> [User] {
+        
+        var results = [User]()
+        
+        var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        
+        var items = json["items"] as? Array<NSDictionary>
+        println("items.count = \(items!.count)")
+        
+        for item in items! {
+            
+            var user : User!
+            
+            var user_id = item["user_id"] as? Int
+            var display_name = item["display_name"] as? String
+            var link = item["link"] as? String
+            var profile_image = item["profile_image"] as? String
+            
+            results.append(User(
+                user_id: user_id!,
+                display_name: display_name!,
+                link: link!,
+                profileImage: profile_image!))
+            
+        }
+        
+        return results
+        
+    }
 }

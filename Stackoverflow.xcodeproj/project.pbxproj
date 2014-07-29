@@ -18,14 +18,17 @@
 		4E378DED1986DDE3000B71A2 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DEC1986DDE3000B71A2 /* Question.swift */; };
 		4E378DEF1986DE9F000B71A2 /* StackoverflowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DEE1986DE9F000B71A2 /* StackoverflowTests.swift */; };
 		4E378DF01986E01A000B71A2 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DEC1986DDE3000B71A2 /* Question.swift */; };
-		4E378DF21986E0E5000B71A2 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF11986E0E5000B71A2 /* UserInfo.swift */; };
+		4E378DF21986E0E5000B71A2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF11986E0E5000B71A2 /* User.swift */; };
 		4E378DF41986E0FC000B71A2 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF31986E0FC000B71A2 /* Answer.swift */; };
-		4E378DF71986E501000B71A2 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF11986E0E5000B71A2 /* UserInfo.swift */; };
+		4E378DF71986E501000B71A2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF11986E0E5000B71A2 /* User.swift */; };
 		4E378DF91986E97F000B71A2 /* question-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E378DF81986E97F000B71A2 /* question-mock.json */; };
 		4E378DFA1986E97F000B71A2 /* question-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E378DF81986E97F000B71A2 /* question-mock.json */; };
 		4E378DFC1986F7E7000B71A2 /* Stackoverflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */; };
 		4E378DFD1986F831000B71A2 /* Stackoverflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */; };
 		4EDD7D8619871B8400F0C2E8 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF31986E0FC000B71A2 /* Answer.swift */; };
+		4EDD7DB4198745D300F0C2E8 /* answer-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E1AAD5319870EC900604D63 /* answer-mock.json */; };
+		4EDD7DB5198745D900F0C2E8 /* user-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E1AAD5519870EF900604D63 /* user-mock.json */; };
+		4EDD7DB6198745DA00F0C2E8 /* user-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E1AAD5519870EF900604D63 /* user-mock.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +57,7 @@
 		4E378DE01986DC3A000B71A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E378DEC1986DDE3000B71A2 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		4E378DEE1986DE9F000B71A2 /* StackoverflowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackoverflowTests.swift; sourceTree = "<group>"; };
-		4E378DF11986E0E5000B71A2 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		4E378DF11986E0E5000B71A2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4E378DF31986E0FC000B71A2 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		4E378DF81986E97F000B71A2 /* question-mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "question-mock.json"; sourceTree = "<group>"; };
 		4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stackoverflow.swift; sourceTree = "<group>"; };
@@ -133,8 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				4E378DE01986DC3A000B71A2 /* Info.plist */,
-				4E378DF81986E97F000B71A2 /* question-mock.json */,
 				4E1AAD5319870EC900604D63 /* answer-mock.json */,
+				4E378DF81986E97F000B71A2 /* question-mock.json */,
 				4E1AAD5519870EF900604D63 /* user-mock.json */,
 			);
 			name = "Supporting Files";
@@ -145,7 +148,7 @@
 			children = (
 				4E378DF31986E0FC000B71A2 /* Answer.swift */,
 				4E378DEC1986DDE3000B71A2 /* Question.swift */,
-				4E378DF11986E0E5000B71A2 /* UserInfo.swift */,
+				4E378DF11986E0E5000B71A2 /* User.swift */,
 				4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */,
 			);
 			name = Model;
@@ -233,7 +236,9 @@
 			files = (
 				4E378DD41986DC3A000B71A2 /* Main.storyboard in Resources */,
 				4E378DF91986E97F000B71A2 /* question-mock.json in Resources */,
+				4EDD7DB5198745D900F0C2E8 /* user-mock.json in Resources */,
 				4E378DD61986DC3A000B71A2 /* Images.xcassets in Resources */,
+				4EDD7DB4198745D300F0C2E8 /* answer-mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDD7DB6198745DA00F0C2E8 /* user-mock.json in Resources */,
 				4E378DFA1986E97F000B71A2 /* question-mock.json in Resources */,
 				4E1AAD5419870EC900604D63 /* answer-mock.json in Resources */,
 			);
@@ -254,7 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E378DFC1986F7E7000B71A2 /* Stackoverflow.swift in Sources */,
-				4E378DF21986E0E5000B71A2 /* UserInfo.swift in Sources */,
+				4E378DF21986E0E5000B71A2 /* User.swift in Sources */,
 				4E378DED1986DDE3000B71A2 /* Question.swift in Sources */,
 				4E378DF41986E0FC000B71A2 /* Answer.swift in Sources */,
 				4E378DD11986DC3A000B71A2 /* ViewController.swift in Sources */,
@@ -266,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E378DF71986E501000B71A2 /* UserInfo.swift in Sources */,
+				4E378DF71986E501000B71A2 /* User.swift in Sources */,
 				4E1AAD4E19870C2A00604D63 /* UserInfoTests.swift in Sources */,
 				4E378DFD1986F831000B71A2 /* Stackoverflow.swift in Sources */,
 				4E1AAD5019870E7000604D63 /* AnswerTests.swift in Sources */,

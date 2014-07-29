@@ -8,12 +8,13 @@
 
 import Foundation
 
-class UserInfo {
+class User {
     
     var user_id : Int!
     var display_name : String!
     var link : String!
     var profile_image : String!
+    
     
     init(user_id : Int, display_name : String, link : String, profileImage : String) {
         self.user_id = user_id

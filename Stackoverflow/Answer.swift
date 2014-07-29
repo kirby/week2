@@ -13,14 +13,14 @@ class Answer {
     var answer_id : Int!
     var question_id : Int!
     var is_accepted : Bool!
-    var link : String!
-    var body : String?
+    var owner : User!
     
-    init(answer_id : Int, question_id : Int, is_accepted : Bool, link : String) {
+    
+    init(answer_id : Int, question_id : Int, is_accepted : Bool, owner : User) {
         self.answer_id = answer_id
         self.question_id = question_id
         self.is_accepted = is_accepted
-        self.link = link
+        self.owner = owner
     }
     
     

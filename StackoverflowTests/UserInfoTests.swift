@@ -11,11 +11,11 @@ import XCTest
 
 class UserInfoTests: XCTestCase {
     
-    var user : UserInfo!
+    var user : User!
     
     override func setUp() {
         super.setUp()
-        user = UserInfo(
+        user = User(
             user_id: 007,
             display_name: "James Bond",
             link: "http://www.example.com/007",

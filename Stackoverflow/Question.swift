@@ -14,11 +14,12 @@ class Question {
     var title : String!
     var is_answered : Bool!
     var link : String!
-    var owner : UserInfo!
+    var owner : User!
     var answer_count : Int!
     var tags = [String]()
 
-    init(question_id : Int, title : String, is_answered : Bool, link : String, owner : UserInfo, answer_count : Int, tags : [String]) {
+    
+    init(question_id : Int, title : String, is_answered : Bool, link : String, owner : User, answer_count : Int, tags : [String]) {
         self.question_id = question_id
         self.title = title
         self.is_answered = is_answered

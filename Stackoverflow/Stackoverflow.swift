@@ -12,13 +12,51 @@ class Stackoverflow {
     
     var answers = [Answer]()
     var questions = [Question]()
-    var users = [UserInfo]()
+    var users = [User]()
     
+    
+    // parse answer JSON
     func parseAnswers(data : NSData) {
+
         var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        var items = json["items"] as? Array<NSDictionary>
+        println("items.count = \(items!.count)")
+        
+        for item in items! {
+            
+            var answer : Answer!
+            var user : User!
+            
+            var answer_id = item["answer_id"] as? Int
+            var question_id = item["question_id"] as? Int
+            var is_accepted = item["is_accepted"] as? Bool
+            
+            if let owner = item["owner"] as? NSDictionary {
+                var user_id = owner["user_id"] as? Int
+                var display_name = owner["display_name"] as? String
+                var link = owner["link"] as? String
+                var profile_image = owner["profile_image"] as? String
+                
+                user = User(
+                    user_id: user_id!,
+                    display_name: display_name!,
+                    link: link!,
+                    profileImage: profile_image!)
+            }
+            
+            answers.append(Answer(
+                answer_id: answer_id!,
+                question_id: question_id!,
+                is_accepted: is_accepted!,
+                owner: user!))
+            
+        }
+        
     }
     
-    func parseQuestion(data : NSData) {
+    // parse question JSON
+    func parseQuestions(data : NSData) {
+        
         var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         
         var items = json["items"] as? Array<NSDictionary>
@@ -27,7 +65,7 @@ class Stackoverflow {
         for item in items! {
             
             var question : Question!
-            var user : UserInfo!
+            var user : User!
             
             var question_id = item["question_id"] as? Int
             var title = item["title"] as? String
@@ -43,7 +81,7 @@ class Stackoverflow {
                 var link = owner["link"] as? String
                 var profile_image = owner["profile_image"] as? String
                 
-                user = UserInfo(
+                user = User(
                     user_id: user_id!,
                     display_name: display_name!,
                     link: link!,
@@ -69,9 +107,30 @@ class Stackoverflow {
         }
     }
     
+    // parse users JSON
     func parseUsers(data : NSData) {
+        
         var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         
+        var items = json["items"] as? Array<NSDictionary>
+        println("items.count = \(items!.count)")
+        
+        for item in items! {
+            
+            var user : User!
+            
+            var user_id = item["user_id"] as? Int
+            var display_name = item["display_name"] as? String
+            var link = item["link"] as? String
+            var profile_image = item["profile_image"] as? String
+            
+            users.append(User(
+                user_id: user_id!,
+                display_name: display_name!,
+                link: link!,
+                profileImage: profile_image!))
+            
+        }
     }
     
 }

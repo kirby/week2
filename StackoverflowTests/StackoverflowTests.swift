@@ -10,8 +10,6 @@ import UIKit
 import XCTest
 
 class StackoverflowTests: XCTestCase {
-    
-    var mockData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("question-mock", ofType: "json"))
 
     override func setUp() {
         super.setUp()
@@ -22,10 +20,18 @@ class StackoverflowTests: XCTestCase {
         super.tearDown()
     }
     
-    func testQuestion_mock_json_isValid() {
-        var stackoverflow = Stackoverflow(data: mockData)
+    func testQuestion_mock_json() {
+        var mockData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("question-mock", ofType: "json"))
+        var stackoverflow = Stackoverflow()
+        stackoverflow.parseQuestion(mockData)
         XCTAssertEqual(stackoverflow.questions.count, 1, "There should be one question from mock data")
-        
     }
+    
+//    func testUserInfo_mock_json() {
+//        var mockData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("user-mock", ofType: "json"))
+//        var stackoverflow = Stackoverflow()
+////        stackoverflow.parse(data: mockData)
+//        XCTAssertEqual(stackoverflow.questions.count, 1, "There should be one user from mock data")
+//    }
 
 }

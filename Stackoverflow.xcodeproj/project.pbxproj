@@ -25,6 +25,7 @@
 		4E378DFA1986E97F000B71A2 /* question-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E378DF81986E97F000B71A2 /* question-mock.json */; };
 		4E378DFC1986F7E7000B71A2 /* Stackoverflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */; };
 		4E378DFD1986F831000B71A2 /* Stackoverflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DFB1986F7E7000B71A2 /* Stackoverflow.swift */; };
+		4EDD7D8619871B8400F0C2E8 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF31986E0FC000B71A2 /* Answer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +273,7 @@
 				4E1AAD5219870E7E00604D63 /* QuestionTests.swift in Sources */,
 				4E378DF01986E01A000B71A2 /* Question.swift in Sources */,
 				4E378DEF1986DE9F000B71A2 /* StackoverflowTests.swift in Sources */,
+				4EDD7D8619871B8400F0C2E8 /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

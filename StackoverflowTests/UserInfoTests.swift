@@ -15,7 +15,11 @@ class UserInfoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        user = UserInfo(user_id: 007, display_name: "James Bond", link: "http://www.example.com/007", profileImage: "http://www.example.com/007image")
+        user = UserInfo(
+            user_id: 007,
+            display_name: "James Bond",
+            link: "http://www.example.com/007",
+            profileImage: "http://www.example.com/007image")
     }
     
     override func tearDown() {

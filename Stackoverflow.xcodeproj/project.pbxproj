@@ -121,9 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				4E1AAD4F19870E7000604D63 /* AnswerTests.swift */,
-				4E378DEE1986DE9F000B71A2 /* StackoverflowTests.swift */,
 				4E1AAD4D19870C2A00604D63 /* UserInfoTests.swift */,
 				4E1AAD5119870E7E00604D63 /* QuestionTests.swift */,
+				4E378DEE1986DE9F000B71A2 /* StackoverflowTests.swift */,
 				4E378DDF1986DC3A000B71A2 /* Supporting Files */,
 			);
 			path = StackoverflowTests;

@@ -10,14 +10,9 @@ import Foundation
 
 class Stackoverflow {
     
-    var users = [UserInfo]()
-    var questions = [Question]()
     var answers = [Answer]()
-    
-    func parseUsers(data : NSData) {
-        var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        
-    }
+    var questions = [Question]()
+    var users = [UserInfo]()
     
     func parseAnswers(data : NSData) {
         var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
@@ -74,6 +69,9 @@ class Stackoverflow {
         }
     }
     
-    
+    func parseUsers(data : NSData) {
+        var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+        
+    }
     
 }

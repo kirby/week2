@@ -10,27 +10,29 @@ import UIKit
 import XCTest
 
 class AnswerTests: XCTestCase {
+    
+    var answer : Answer!
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        var answer_id = 100
+        var question_id = 101
+        var is_accepted = true
+        var link = "https://www.example.com/"
+        
+        answer = Answer(
+            answer_id: answer_id,
+            question_id: question_id,
+            is_accepted: is_accepted,
+            link: link)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testAnswer_init() {
+        XCTAssertNotNil(answer, "answer should not be nil after init")
     }
 
 }

@@ -22,4 +22,6 @@ class Answer {
         self.is_accepted = is_accepted
         self.link = link
     }
+    
+    
 }

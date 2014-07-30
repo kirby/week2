@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UITableViewController, UITableViewDataSource, UISearchBarDelegate {
+class RootViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var questionTable: UITableView!
@@ -31,6 +31,7 @@ class RootViewController: UITableViewController, UITableViewDataSource, UISearch
         
         self.searchBar.delegate = self
         
+        self.questionTable.estimatedRowHeight = 40
         self.questionTable.rowHeight = UITableViewAutomaticDimension
         self.questionTable.delegate = self
         
@@ -49,7 +50,8 @@ class RootViewController: UITableViewController, UITableViewDataSource, UISearch
     
     func search(searchTerm : String) {
         searchBar.resignFirstResponder()
-        networkController.fetchQuestionsForSearchTerm(searchTerm, callback: handleSearchResponse)
+        var encodedSearchTerm = searchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
     }
 
     func handleSearchResponse(questions : [Question]?, errorDescription : String?) {
@@ -63,19 +65,8 @@ class RootViewController: UITableViewController, UITableViewDataSource, UISearch
         })
 
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
 
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
@@ -90,10 +81,22 @@ class RootViewController: UITableViewController, UITableViewDataSource, UISearch
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("questionCell", forIndexPath: indexPath) as QuestionTableViewCell
-//        println("\(questions![indexPath.row].title)")
         cell.titleText.text = questions![indexPath.row].title
         
+        //UIFontTextStyleHeadline
+        //UIFontTextStyleSubheadline
+        
+        cell.titleText.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         return cell
+    }
+    
+    
+    //MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        if let detailVC = self.storyboard.instantiateViewControllerWithIdentifier("QuestionDetail") as? DetailViewController {
+            showDetailViewController(detailVC, sender: questions![indexPath.row])
+        }
     }
 
     /*

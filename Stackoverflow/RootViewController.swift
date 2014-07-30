@@ -57,9 +57,11 @@ class RootViewController: UITableViewController, UITableViewDataSource, UISearch
             println("\(errorDescription)")
             return
         }
-        println("\(questions!.count)")
-        self.questions = questions
-        questionTable.reloadData()
+        NSOperationQueue.mainQueue().addOperationWithBlock({
+            self.questions = questions
+            self.questionTable.reloadData()
+        })
+
     }
     
     override func didReceiveMemoryWarning() {

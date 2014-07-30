@@ -8,8 +8,9 @@
 
 import UIKit
 
-class RootViewController: UITableViewController, UITableViewDataSource {
+class RootViewController: UITableViewController, UITableViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var questionTable: UITableView!
     
     var networkController = NetworkController()
@@ -27,12 +28,30 @@ class RootViewController: UITableViewController, UITableViewDataSource {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.searchBar.delegate = self
+        
         self.questionTable.rowHeight = UITableViewAutomaticDimension
         self.questionTable.delegate = self
         
-        networkController.fetchQuestionsForSearchTerm("Swift", callback: handleSearchResponse)
+        //networkController.fetchQuestionsForSearchTerm("Swift", callback: handleSearchResponse)
     }
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+        println("searchBarSearchButtonClicked")
+        search(searchBar.text)
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
+        println("searchBarTextDidEndEditing")
+        search(searchBar.text)
+    }
+    
+    func search(searchTerm : String) {
+        searchBar.resignFirstResponder()
+        networkController.fetchQuestionsForSearchTerm(searchTerm, callback: handleSearchResponse)
+    }
+
     func handleSearchResponse(questions : [Question]?, errorDescription : String?) {
         if errorDescription {
             println("\(errorDescription)")
@@ -69,9 +88,7 @@ class RootViewController: UITableViewController, UITableViewDataSource {
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("questionCell", forIndexPath: indexPath) as QuestionTableViewCell
-        println("\(questions![indexPath.row].title)")
-        
-//        cell.backgroundColor = UIColor.blueColor()
+//        println("\(questions![indexPath.row].title)")
         cell.titleText.text = questions![indexPath.row].title
         
         return cell

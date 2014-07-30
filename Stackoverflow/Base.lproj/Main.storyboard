@@ -16,21 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G1G-gq-woP">
-                                <rect key="frame" x="20" y="28" width="560" height="564"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7E-Jg-6Qf">
+                                <rect key="frame" x="279" y="20" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="G1G-gq-woP" secondAttribute="trailing" constant="20" symbolic="YES" id="Fd2-XE-ghB"/>
-                            <constraint firstItem="G1G-gq-woP" firstAttribute="leading" secondItem="ZUd-05-tRB" secondAttribute="leading" constant="20" symbolic="YES" id="LDH-Di-0sQ"/>
-                            <constraint firstItem="G1G-gq-woP" firstAttribute="top" secondItem="8V2-fy-rhD" secondAttribute="bottom" constant="20" symbolic="YES" id="QOt-22-wnT"/>
-                            <constraint firstItem="Uyt-0V-Y6K" firstAttribute="top" secondItem="G1G-gq-woP" secondAttribute="bottom" constant="20" symbolic="YES" id="ZR1-Ql-QEc"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="detailView" destination="G1G-gq-woP" id="qUf-8l-QD8"/>
+                        <outlet property="idLabel" destination="d7E-Jg-6Qf" id="HGr-ex-LqK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0W-Rf-VdE" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,27 +10,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var question : Question?
+    @IBOutlet weak var idLabel: UILabel!
     
-    @IBOutlet weak var detailView: UIView!
+    var question : Question?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         if question {
-            self.title = "\(question!.question_id)"
+            println("\(question)")
+            idLabel.text = question!.title
         }
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

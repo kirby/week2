@@ -43,10 +43,10 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
         search(searchBar.text)
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-        println("searchBarTextDidEndEditing")
-        search(searchBar.text)
-    }
+//    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
+//        println("searchBarTextDidEndEditing")
+//        search(searchBar.text)
+//    }
     
     func search(searchTerm : String) {
         searchBar.resignFirstResponder()
@@ -93,11 +93,18 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
     
     //MARK: - UITableViewDelegate
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        if let detailVC = self.storyboard.instantiateViewControllerWithIdentifier("QuestionDetail") as? DetailViewController {
-            showDetailViewController(detailVC, sender: questions![indexPath.row])
-        }
-    }
+//    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+//        if let detailVC = self.storyboard.instantiateViewControllerWithIdentifier("QuestionDetail") as? DetailViewController {
+//            showDetailViewController(detailVC, sender: questions![indexPath.row])
+//        }
+//    }
+//    
+//    override func targetViewControllerForAction(action: Selector, sender: AnyObject!) -> UIViewController! {
+//        
+//        if (action == "showDetailViewController") {
+//            println("do I do anything here?")
+//        }
+//    }
 
     /*
     // Override to support conditional editing of the table view.

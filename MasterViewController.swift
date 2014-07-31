@@ -12,9 +12,19 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     var selectedQuestionDelegate : QuestionSelectedDelegate?    // AppDelegate sets this up for us
     var networkController = NetworkController()
+    
+    var responses = Dictionary<String,AnyObject>()
+    
     var questions : [QuestionModel]?
+    var badges : [BadgeModel]?
 
+    @IBOutlet weak var buttonBarItems: UISegmentedControl!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBAction func buttonToggle() {
+        // fire off a new search
+        search(searchBar.text)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +35,13 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //networkController.fetchQuestionsForSearchTerm("Swift", callback: handleSearchResponse)
+        
+        var badges = [BadgeModel]()
+        var questions = [QuestionModel]()
+        
+        self.responses["badge"] = badges
+        self.responses["questions"] = questions
+        
         self.searchBar.delegate = self
         self.tableView.estimatedRowHeight = 40
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -35,8 +52,29 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         super.viewWillAppear(animated)
         if self.splitViewController.collapsed {
             println("collapsed")
-            
         }
+    }
+    
+    func handleResponse(response : [AnyObject]?, errorDescription : String?) {
+        if errorDescription {
+            println("\(errorDescription)")
+            return
+        }
+        NSOperationQueue.mainQueue().addOperationWithBlock({
+            self.responses["search"] = response
+            self.tableView.reloadData()
+            })
+    }
+    
+    func handleBadgeResponse(badges : [BadgeModel]?, errorDescription : String?) {
+        if errorDescription {
+            println("\(errorDescription)")
+            return
+        }
+        NSOperationQueue.mainQueue().addOperationWithBlock({
+            self.badges = badges
+            self.tableView.reloadData()
+            })
     }
     
     func handleSearchResponse(questions : [QuestionModel]?, errorDescription : String?) {
@@ -48,7 +86,6 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
             self.questions = questions
             self.tableView.reloadData()
             })
-        
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
@@ -59,7 +96,16 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     func search(searchTerm : String) {
         searchBar.resignFirstResponder()
         var encodedSearchTerm = searchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
+        
+//        networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
+        
+        if buttonBarItems.selectedSegmentIndex == 0 {
+            questions = nil
+            networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
+        } else {
+            badges = nil
+            networkController.fetchBadgesForSearchTerm(encodedSearchTerm, callback: handleBadgeResponse)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,17 +124,30 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if questions {
-            return questions!.count
+        
+        if (buttonBarItems.selectedSegmentIndex == 0) {
+            if questions {return questions!.count}
         }
+        
+        if (buttonBarItems.selectedSegmentIndex == 1) {
+            if badges {return badges!.count}
+        }
+        
         return 0
     }
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as MasterTableViewCell
 //        cell.textView.userInteractionEnabled = false
-        cell.textView.text = questions![indexPath.row].title
-
+        
+        if (buttonBarItems.selectedSegmentIndex == 0) {
+            cell.textView.text = questions![indexPath.row].title
+        }
+        
+        if (buttonBarItems.selectedSegmentIndex == 1) {
+            cell.textView.text = badges![indexPath.row].name
+        }
+        
         return cell
     }
     
@@ -97,8 +156,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         if questions {
             println("selectedQuestionDelegate = \(selectedQuestionDelegate)")
             var detailVC = self.storyboard.instantiateViewControllerWithIdentifier("detailView") as DetailViewController
-            detailVC.selectedQuestion(questions![indexPath.row])
             
+            if (buttonBarItems.selectedSegmentIndex == 0) {
+                detailVC.selectedQuestion(questions![indexPath.row])
+            }
+            
+            if (buttonBarItems.selectedSegmentIndex == 1) {
+                detailVC.selectedBadge(badges![indexPath.row])
+            }
             
             self.splitViewController.showDetailViewController(detailVC, sender: self)
 

@@ -12,16 +12,32 @@ protocol QuestionSelectedDelegate {
     func selectedQuestion(question : QuestionModel)
 }
 
-class DetailViewController: UIViewController, QuestionSelectedDelegate {
+protocol ModelUpdatedDelegate {
+    
+    func selectedBadge(badge : BadgeModel)
+    func selectedQuestion(question : QuestionModel)
+    
+    func modelUpdated(model : AnyObject)
+}
+
+class DetailViewController: UIViewController, ModelUpdatedDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     
+    var model : AnyObject?
+    
     var question : QuestionModel?
+    var badge : BadgeModel?
+    
+    var link : String?
+    
+    var modelUpdatedDelegate : ModelUpdatedDelegate?
     var selectedQuestionDelegate : QuestionSelectedDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedQuestionDelegate = self
+        self.modelUpdatedDelegate = self
+//        self.selectedQuestionDelegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -38,20 +54,32 @@ class DetailViewController: UIViewController, QuestionSelectedDelegate {
             
         }
         
-        if question {
-            var request = NSURLRequest(URL: NSURL(string: question!.link))
+        if link {
+            var request = NSURLRequest(URL: NSURL(string: link))
             self.webView.loadRequest(request)
         }
         
     }
     
-    // MARK: - QuestionSelectionDelegate
+    // MARK: - ModelUpdatedDelegate
     
     func selectedQuestion(question: QuestionModel) {
         println("selectedQuestion \(question)")
-//        self.label.text = question.title
         self.question = question
-        
+        self.link = question.link
+    }
+    
+    func selectedBadge(badge: BadgeModel) {
+        println("selectedBadge \(badge)")
+        self.badge = badge
+        self.link = badge.link
+    }
+    
+    // MARK: -
+    
+    func modelUpdated(model : AnyObject) {
+        println("selectedQuestion \(model)")
+        self.model = model
     }
 
     /*

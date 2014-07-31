@@ -90,8 +90,23 @@
                             <outlet property="delegate" destination="DG4-TJ-Qux" id="MhM-aY-eZp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Stackoverflow" id="wuD-Ke-a2H"/>
+                    <navigationItem key="navigationItem" title="Stackoverflow" id="wuD-Ke-a2H">
+                        <barButtonItem key="rightBarButtonItem" id="iRX-hb-mjz">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="oh7-p0-bKZ">
+                                <rect key="frame" x="-61" y="-14" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Search"/>
+                                    <segment title="Badges"/>
+                                </segments>
+                                <connections>
+                                    <action selector="buttonToggle" destination="DG4-TJ-Qux" eventType="valueChanged" id="gOP-th-evK"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="buttonBarItems" destination="oh7-p0-bKZ" id="AWt-Y9-DGW"/>
                         <outlet property="searchBar" destination="RXh-qL-qVh" id="2lw-Ha-RgX"/>
                     </connections>
                 </tableViewController>

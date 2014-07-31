@@ -8,7 +8,9 @@
 
 import Foundation
 
-class QuestionModel {
+let SEARCH_ENDPOINT = "https://api.stackexchange.com2.2/search?order=desc&sort=activity&site=stackoverflow&intitle="
+
+class QuestionModel : NSObject {
     
     var question_id : Int?
     var title : String?

@@ -36,6 +36,8 @@
 		4E92FE71198ADC39000E66D5 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92FE70198ADC39000E66D5 /* Tag.swift */; };
 		4E92FE73198ADC39000E66D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92FE72198ADC39000E66D5 /* User.swift */; };
 		4E92FE75198ADC39000E66D5 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92FE74198ADC39000E66D5 /* Question.swift */; };
+		4E92FE77198AE371000E66D5 /* BadgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92FE76198AE371000E66D5 /* BadgeModel.swift */; };
+		4E92FE78198AF4AC000E66D5 /* BadgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92FE76198AE371000E66D5 /* BadgeModel.swift */; };
 		4EDD7D8619871B8400F0C2E8 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E378DF31986E0FC000B71A2 /* AnswerModel.swift */; };
 		4EDD7DB4198745D300F0C2E8 /* answer-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E1AAD5319870EC900604D63 /* answer-mock.json */; };
 		4EDD7DB5198745D900F0C2E8 /* user-mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E1AAD5519870EF900604D63 /* user-mock.json */; };
@@ -83,6 +85,7 @@
 		4E92FE70198ADC39000E66D5 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		4E92FE72198ADC39000E66D5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4E92FE74198ADC39000E66D5 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		4E92FE76198AE371000E66D5 /* BadgeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,7 @@
 			children = (
 				4E92FE6C198AC73C000E66D5 /* Managed */,
 				4E378DF31986E0FC000B71A2 /* AnswerModel.swift */,
+				4E92FE76198AE371000E66D5 /* BadgeModel.swift */,
 				4E378DEC1986DDE3000B71A2 /* QuestionModel.swift */,
 				4E0AEDBE19883C92001CB2C3 /* SearchModel.swift */,
 				4E378DF11986E0E5000B71A2 /* UserModel.swift */,
@@ -339,6 +343,7 @@
 				4E378DFC1986F7E7000B71A2 /* Stackoverflow.swift in Sources */,
 				4E378DF21986E0E5000B71A2 /* UserModel.swift in Sources */,
 				4E378DED1986DDE3000B71A2 /* QuestionModel.swift in Sources */,
+				4E92FE77198AE371000E66D5 /* BadgeModel.swift in Sources */,
 				4E57818B198983FD007F49B7 /* RootViewController.swift in Sources */,
 				4E378DF41986E0FC000B71A2 /* AnswerModel.swift in Sources */,
 				4E92FE73198ADC39000E66D5 /* User.swift in Sources */,
@@ -362,6 +367,7 @@
 				4E1AAD5019870E7000604D63 /* AnswerTests.swift in Sources */,
 				4E1AAD5219870E7E00604D63 /* QuestionTests.swift in Sources */,
 				4E378DF01986E01A000B71A2 /* QuestionModel.swift in Sources */,
+				4E92FE78198AF4AC000E66D5 /* BadgeModel.swift in Sources */,
 				4E378DEF1986DE9F000B71A2 /* StackoverflowTests.swift in Sources */,
 				4EDD7D8619871B8400F0C2E8 /* AnswerModel.swift in Sources */,
 			);

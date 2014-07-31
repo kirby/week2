@@ -10,9 +10,9 @@ import Foundation
 
 class Stackoverflow {
     
-    var answers = [Answer]()
-    var questions = [Question]()
-    var users = [User]()
+    var answers = [AnswerModel]()
+    var questions = [QuestionModel]()
+    var users = [UserModel]()
     
     
     // parse answer JSON
@@ -24,8 +24,8 @@ class Stackoverflow {
         
         for item in items! {
             
-            var answer : Answer!
-            var user : User!
+            var answer : AnswerModel!
+            var user : UserModel!
             
             var answer_id = item["answer_id"] as? Int
             var question_id = item["question_id"] as? Int
@@ -37,14 +37,14 @@ class Stackoverflow {
                 var link = owner["link"] as? String
                 var profile_image = owner["profile_image"] as? String
                 
-                user = User(
+                user = UserModel(
                     user_id: user_id!,
                     display_name: display_name!,
                     link: link!,
                     profileImage: profile_image!)
             }
             
-            answers.append(Answer(
+            answers.append(AnswerModel(
                 answer_id: answer_id!,
                 question_id: question_id!,
                 is_accepted: is_accepted!,
@@ -64,8 +64,8 @@ class Stackoverflow {
         
         for item in items! {
             
-            var question : Question!
-            var user : User!
+            var question : QuestionModel!
+            var user : UserModel!
             
             var question_id = item["question_id"] as? Int
             var title = item["title"] as? String
@@ -81,7 +81,7 @@ class Stackoverflow {
                 var link = owner["link"] as? String
                 var profile_image = owner["profile_image"] as? String
                 
-                user = User(
+                user = UserModel(
                     user_id: user_id!,
                     display_name: display_name!,
                     link: link!,
@@ -96,7 +96,7 @@ class Stackoverflow {
                 }
             }
             
-            questions.append(Question(
+            questions.append(QuestionModel(
                 question_id: question_id!,
                 title: title!,
                 is_answered: is_answered!,
@@ -117,14 +117,14 @@ class Stackoverflow {
         
         for item in items! {
             
-            var user : User!
+            var user : UserModel!
             
             var user_id = item["user_id"] as? Int
             var display_name = item["display_name"] as? String
             var link = item["link"] as? String
             var profile_image = item["profile_image"] as? String
             
-            users.append(User(
+            users.append(UserModel(
                 user_id: user_id!,
                 display_name: display_name!,
                 link: link!,

@@ -13,7 +13,7 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var searchBar: UISearchBar!
     
     var networkController = NetworkController()
-    var questions : [Question]?
+    var questions : [QuestionModel]?
     
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
@@ -53,7 +53,7 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
         networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
     }
 
-    func handleSearchResponse(questions : [Question]?, errorDescription : String?) {
+    func handleSearchResponse(questions : [QuestionModel]?, errorDescription : String?) {
         if errorDescription {
             println("\(errorDescription)")
             return

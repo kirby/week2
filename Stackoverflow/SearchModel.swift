@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Search {
+class SearchModel {
     
     var question_id : Int!
     var title : String!
@@ -18,9 +18,9 @@ class Search {
         self.title = title
     }
     
-    class func parseFromNSData(data : NSData) -> [Search] {
+    class func parseFromNSData(data : NSData) -> [SearchModel] {
         
-        var results = [Search]()
+        var results = [SearchModel]()
         
         var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         var items = json["items"] as? Array<NSDictionary>
@@ -28,12 +28,12 @@ class Search {
         
         for item in items! {
             
-            var search : Search!
+            var search : SearchModel!
             
             var question_id = item["question_id"] as? Int
             var title = item["title"] as? String
 
-            results.append(Search(question_id: question_id!, title: title!))
+            results.append(SearchModel(question_id: question_id!, title: title!))
             
         }
         

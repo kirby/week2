@@ -12,7 +12,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     var selectedQuestionDelegate : QuestionSelectedDelegate?    // AppDelegate sets this up for us
     var networkController = NetworkController()
-    var questions : [Question]?
+    var questions : [QuestionModel]?
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -39,7 +39,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    func handleSearchResponse(questions : [Question]?, errorDescription : String?) {
+    func handleSearchResponse(questions : [QuestionModel]?, errorDescription : String?) {
         if errorDescription {
             println("\(errorDescription)")
             return

@@ -9,13 +9,14 @@
 import UIKit
 
 protocol QuestionSelectedDelegate {
-    func selectedQuestion(question : Question)
+    func selectedQuestion(question : QuestionModel)
 }
 
 class DetailViewController: UIViewController, QuestionSelectedDelegate {
-    @IBOutlet weak var label: UILabel!
+
+    @IBOutlet weak var webView: UIWebView!
     
-    var question : Question?
+    var question : QuestionModel?
     var selectedQuestionDelegate : QuestionSelectedDelegate?
 
     override func viewDidLoad() {
@@ -31,22 +32,22 @@ class DetailViewController: UIViewController, QuestionSelectedDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        super.viewWillAppear(animated)
+
         if self.splitViewController.collapsed {
             println("collapsed")
             
         }
         
         if question {
-            self.label.text = question!.title
+            var request = NSURLRequest(URL: NSURL(string: question!.link))
+            self.webView.loadRequest(request)
         }
         
     }
     
     // MARK: - QuestionSelectionDelegate
     
-    func selectedQuestion(question: Question) {
+    func selectedQuestion(question: QuestionModel) {
         println("selectedQuestion \(question)")
 //        self.label.text = question.title
         self.question = question

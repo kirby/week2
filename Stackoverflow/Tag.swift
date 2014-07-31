@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  Tag.swift
 //  Stackoverflow
 //
 //  Created by Kirby Shabaga on 7/31/14.
@@ -9,12 +9,9 @@
 import Foundation
 import CoreData
 
-class User: NSManagedObject {
+class Tag: NSManagedObject {
 
-    @NSManaged var profile_image: NSData
-    @NSManaged var user_id: NSNumber
-    @NSManaged var display_name: String
-    @NSManaged var link: String
+    @NSManaged var text: String
     @NSManaged var questions: NSSet
 
 }

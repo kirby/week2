@@ -19,7 +19,7 @@ class NetworkController {
     var pagesieze = 5
     var suffix = "/2.2/search?order=desc&sort=activity&site=stackoverflow&pagesize="  // 1&intitle="
     
-    func fetchQuestionsForSearchTerm(searchTerm : String, callback : (questions : [Question]?, errorDescription : String?) -> Void) {
+    func fetchQuestionsForSearchTerm(searchTerm : String, callback : (questions : [QuestionModel]?, errorDescription : String?) -> Void) {
         
         println("fetchQuestions for \(searchTerm)")
         
@@ -41,7 +41,7 @@ class NetworkController {
                 }
             }
             
-            callback(questions: Question.parseQuestions(data), errorDescription: nil)
+            callback(questions: QuestionModel.parseQuestions(data), errorDescription: nil)
             
             })
         

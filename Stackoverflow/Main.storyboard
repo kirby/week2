@@ -7,7 +7,7 @@
         <!--Detail View Controller-->
         <scene sceneID="arw-mm-GXo">
             <objects>
-                <viewController id="wes-Iz-9sb" customClass="DetailViewController" customModule="Stackoverflow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wes-Iz-9sb" customClass="DetailViewController" customModule="Stackoverflow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="puV-Se-Z95"/>
                         <viewControllerLayoutGuide type="bottom" id="hqq-7f-xOz"/>

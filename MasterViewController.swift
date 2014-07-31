@@ -31,6 +31,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         self.tableView.delegate = self
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.splitViewController.collapsed {
+            println("collapsed")
+            
+        }
+    }
+    
     func handleSearchResponse(questions : [Question]?, errorDescription : String?) {
         if errorDescription {
             println("\(errorDescription)")
@@ -88,7 +96,14 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
         println("selected row: \(indexPath.row)")
         if questions {
             println("selectedQuestionDelegate = \(selectedQuestionDelegate)")
-            selectedQuestionDelegate!.selectedQuestion(questions![indexPath.row])
+            var detailVC = self.storyboard.instantiateViewControllerWithIdentifier("detailView") as DetailViewController
+            detailVC.selectedQuestion(questions![indexPath.row])
+            
+            
+            self.splitViewController.showDetailViewController(detailVC, sender: self)
+
+            
+//            selectedQuestionDelegate!.selectedQuestion(questions![indexPath.row])
         }
     }
 

@@ -15,6 +15,7 @@ protocol QuestionSelectedDelegate {
 class DetailViewController: UIViewController, QuestionSelectedDelegate {
     @IBOutlet weak var label: UILabel!
     
+    var question : Question?
     var selectedQuestionDelegate : QuestionSelectedDelegate?
 
     override func viewDidLoad() {
@@ -28,11 +29,28 @@ class DetailViewController: UIViewController, QuestionSelectedDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        super.viewWillAppear(animated)
+        if self.splitViewController.collapsed {
+            println("collapsed")
+            
+        }
+        
+        if question {
+            self.label.text = question!.title
+        }
+        
+    }
+    
     // MARK: - QuestionSelectionDelegate
     
     func selectedQuestion(question: Question) {
         println("selectedQuestion \(question)")
-        self.label.text = question.title
+//        self.label.text = question.title
+        self.question = question
+        
     }
 
     /*

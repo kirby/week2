@@ -15,6 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        
+        var userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        var count = userDefaults.integerForKey("count")
+        println("count = \(count)")
+        
+        if count == 0 {
+            userDefaults.setInteger(1, forKey: "count")
+//            self.window!.rootViewController = 
+        }
+        
+        if count > 0 {
+            userDefaults.setInteger(++count, forKey: "count")
+        }
     
 //        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
 //            if let leftNavController = splitViewController.viewControllers[0] as? UINavigationController {

@@ -20,6 +20,8 @@ class MasterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        println("awakeFromNib")
+        self.textView.userInteractionEnabled = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

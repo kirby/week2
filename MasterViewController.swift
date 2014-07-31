@@ -8,12 +8,9 @@
 
 import UIKit
 
-protocol QuestionSelectionDelegate {
-    func selectedQuestion(question: Question) -> Void
-}
-
 class MasterViewController: UITableViewController, UISearchBarDelegate {
     
+    var selectedQuestionDelegate : QuestionSelectedDelegate?    // AppDelegate sets this up for us
     var networkController = NetworkController()
     var questions : [Question]?
 
@@ -81,10 +78,18 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as MasterTableViewCell
-
+//        cell.textView.userInteractionEnabled = false
         cell.textView.text = questions![indexPath.row].title
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)  {
+        println("selected row: \(indexPath.row)")
+        if questions {
+            println("selectedQuestionDelegate = \(selectedQuestionDelegate)")
+            selectedQuestionDelegate!.selectedQuestion(questions![indexPath.row])
+        }
     }
 
     /*

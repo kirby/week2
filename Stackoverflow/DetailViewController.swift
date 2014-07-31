@@ -8,11 +8,18 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+protocol QuestionSelectedDelegate {
+    func selectedQuestion(question : Question)
+}
+
+class DetailViewController: UIViewController, QuestionSelectedDelegate {
+    @IBOutlet weak var label: UILabel!
+    
+    var selectedQuestionDelegate : QuestionSelectedDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.selectedQuestionDelegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +28,12 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - QuestionSelectionDelegate
+    
+    func selectedQuestion(question: Question) {
+        println("selectedQuestion \(question)")
+        self.label.text = question.title
+    }
 
     /*
     // MARK: - Navigation

@@ -13,9 +13,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+    
+        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
+            if let leftNavController = splitViewController.viewControllers[0] as? UINavigationController {
+                let leftViewController = leftNavController.topViewController as? MasterViewController
+                let rightViewController = splitViewController.viewControllers[1] as? DetailViewController
+                leftViewController!.selectedQuestionDelegate = rightViewController
+                println("AppDelegate setting delegate")
+            }
+        }
+        
+
+//        let leftNavController = splitViewController.viewControllers objectAtIndex:0] as? UINavigationController
+//        LeftViewController *leftViewController = (LeftViewController *)[leftNavController topViewController];
+//        RightViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
+        
         return true
     }
 

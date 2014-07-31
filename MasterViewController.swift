@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  MasterViewController.swift
 //  Stackoverflow
 //
 //  Created by Kirby Shabaga on 7/30/14.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-class RootViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    
-    @IBOutlet weak var searchBar: UISearchBar!
+protocol QuestionSelectionDelegate {
+    func selectedQuestion(question: Question) -> Void
+}
+
+class MasterViewController: UITableViewController, UISearchBarDelegate {
     
     var networkController = NetworkController()
     var questions : [Question]?
-    
-    init(coder aDecoder: NSCoder!) {
-        super.init(coder: aDecoder)
-    }
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,32 +27,13 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+        //networkController.fetchQuestionsForSearchTerm("Swift", callback: handleSearchResponse)
         self.searchBar.delegate = self
-        
         self.tableView.estimatedRowHeight = 40
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.delegate = self
-        
-        //networkController.fetchQuestionsForSearchTerm("Swift", callback: handleSearchResponse)
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
-        println("searchBarSearchButtonClicked")
-        search(searchBar.text)
-    }
-    
-//    func searchBarTextDidEndEditing(searchBar: UISearchBar!) {
-//        println("searchBarTextDidEndEditing")
-//        search(searchBar.text)
-//    }
-    
-    func search(searchTerm : String) {
-        searchBar.resignFirstResponder()
-        var encodedSearchTerm = searchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
-    }
-
     func handleSearchResponse(questions : [Question]?, errorDescription : String?) {
         if errorDescription {
             println("\(errorDescription)")
@@ -61,17 +42,37 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
         NSOperationQueue.mainQueue().addOperationWithBlock({
             self.questions = questions
             self.tableView.reloadData()
-        })
+            })
+        
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar!) {
+        println("searchBarSearchButtonClicked")
+        search(searchBar.text)
+    }
+    
+    func search(searchTerm : String) {
+        searchBar.resignFirstResponder()
+        var encodedSearchTerm = searchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        networkController.fetchQuestionsForSearchTerm(encodedSearchTerm, callback: handleSearchResponse)
+    }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
+    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 1
+    }
+
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        
-        println("\(questions)")
         if questions {
             return questions!.count
         }
@@ -79,33 +80,12 @@ class RootViewController: UITableViewController, UITableViewDataSource, UITableV
     }
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("questionCell", forIndexPath: indexPath) as UITableViewCell
-        
-//        cell.titleText.text = questions![indexPath.row].title
-        
-        //UIFontTextStyleHeadline
-        //UIFontTextStyleSubheadline
-        
-//        cell.titleText.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-//        println("\(questions![indexPath.row].question_id)")
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as MasterTableViewCell
+
+        cell.textView.text = questions![indexPath.row].title
+
         return cell
     }
-    
-    
-    //MARK: - UITableViewDelegate
-    
-//    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-//        if let detailVC = self.storyboard.instantiateViewControllerWithIdentifier("QuestionDetail") as? DetailViewController {
-//            showDetailViewController(detailVC, sender: questions![indexPath.row])
-//        }
-//    }
-//    
-//    override func targetViewControllerForAction(action: Selector, sender: AnyObject!) -> UIViewController! {
-//        
-//        if (action == "showDetailViewController") {
-//            println("do I do anything here?")
-//        }
-//    }
 
     /*
     // Override to support conditional editing of the table view.

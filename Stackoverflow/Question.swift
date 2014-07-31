@@ -52,6 +52,7 @@ class Question {
                         // let question = Question(itemDict) //
                         question.title = itemDict["title"] as? String
                         question.link = itemDict["link"] as? String
+                        question.question_id = itemDict["question_id"] as? Int
 
 //                        question.tags = itemDict["tags"] as? [String]
 //                        if let lastEditDate = NSDate(timeIntervalSince1970: itemDict["last_edit_date"] as? Double) {

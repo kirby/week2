@@ -1,5 +1,5 @@
 //
-//  QuestionTableViewCell.swift
+//  MasterTableViewCell.swift
 //  Stackoverflow
 //
 //  Created by Kirby Shabaga on 7/30/14.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class QuestionTableViewCell: UITableViewCell {
+class MasterTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleText: UITextView!
+    @IBOutlet weak var textView: UITextView!
     
     init(style: UITableViewCellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,5 +27,4 @@ class QuestionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

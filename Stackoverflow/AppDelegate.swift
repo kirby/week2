@@ -8,6 +8,9 @@
 
 import UIKit
 
+var launchCountDisplayed = false
+var launchCount = 0
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
@@ -16,19 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
+        println("appdelegate launchCount\(launchCount)")
         var userDefaults = NSUserDefaults.standardUserDefaults()
-        
         var count = userDefaults.integerForKey("count")
+        launchCount = count
+        
         println("count = \(count)")
+        println("appdelegate launchCount\(launchCount)")
         
-        if count == 0 {
-            userDefaults.setInteger(1, forKey: "count")
-//            self.window!.rootViewController = 
-        }
-        
-        if count > 0 {
-            userDefaults.setInteger(++count, forKey: "count")
-        }
+        userDefaults.setInteger(++count, forKey: "count")
+        var rc = userDefaults.synchronize()
+        println("rc = \(rc)")
     
 //        if let splitViewController = self.window!.rootViewController as? UISplitViewController {
 //            if let leftNavController = splitViewController.viewControllers[0] as? UINavigationController {
@@ -38,11 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                println("AppDelegate setting delegate")
 //            }
 //        }
-        
-
-//        let leftNavController = splitViewController.viewControllers objectAtIndex:0] as? UINavigationController
-//        LeftViewController *leftViewController = (LeftViewController *)[leftNavController topViewController];
-//        RightViewController *rightViewController = [splitViewController.viewControllers objectAtIndex:1];
         
         return true
     }

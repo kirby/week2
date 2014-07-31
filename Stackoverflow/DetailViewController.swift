@@ -33,6 +33,9 @@ class DetailViewController: UIViewController, ModelUpdatedDelegate {
     
     var modelUpdatedDelegate : ModelUpdatedDelegate?
     var selectedQuestionDelegate : QuestionSelectedDelegate?
+    
+    var userDefaults = NSUserDefaults.standardUserDefaults()
+    var welcomeAlert = UIAlertController(title: "Welcome!", message: "Greetings new user", preferredStyle: UIAlertControllerStyle.Alert)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +54,6 @@ class DetailViewController: UIViewController, ModelUpdatedDelegate {
 
         if self.splitViewController.collapsed {
             println("collapsed")
-            
         }
         
         if link {
@@ -59,6 +61,19 @@ class DetailViewController: UIViewController, ModelUpdatedDelegate {
             self.webView.loadRequest(request)
         }
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        println("launchCount = \(launchCount)")
+        
+        if (launchCount == 0 && !launchCountDisplayed) {
+            launchCountDisplayed = true
+            var alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+            welcomeAlert.addAction(alertAction)
+            self.presentViewController(welcomeAlert, animated: true, completion: nil)
+        }
     }
     
     // MARK: - ModelUpdatedDelegate
